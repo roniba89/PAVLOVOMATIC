@@ -21,7 +21,7 @@ void setup() {
 
 void loop() {
   while (Serial.available() > 0) {
-    treat = Serial.parseInt();
+    treat = (char)Serial.read();
     if (treat == 1) {
       giveOneTreat(treat);
     }
@@ -38,6 +38,5 @@ void giveOneTreat(int bamba) {
       delay(3);
     }
   }
-
 }
 
