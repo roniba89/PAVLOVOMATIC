@@ -1,8 +1,30 @@
 import winsound
 import time
+import cv2
+from __builtin__ import xrange
+
+def getImage(camera):
+    # read is the easiest way to get a full image out of a VideoCapture object.
+    retval, im = camera.read()
+    return im
 
 def getPosition():
+    cameraPort = 0
+    rampFrames = 30
+    camera = cv2.VideoCapture(cameraPort)
+    # Ramp the camera - these frames will be discarded and are only used to allow v4l2
+    # to adjust light levels, if necessary
+    for i in xrange(rampFrames):
+        temp = getImage(camera)
+    print("Taking image...")
+    cameraCapture = getImage(camera)
+    #cv2.imshow('image',cameraCapture)
+    #cv2.waitKey(0)
+    #cv2.destroyAllWindows()
+    #ipAns = getState(cameraCapture)
+    del(camera)
     return 1
+    #return ipAns
 
 def getTreat():
     print("Good Job!")
@@ -38,6 +60,3 @@ for x in range(0,5):
         if position == 1:
             getTreat()
             sit = True
-
-
-
