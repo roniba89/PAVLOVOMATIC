@@ -3,10 +3,12 @@ import time
 import cv2
 from __builtin__ import xrange
 
+
 def getImage(camera):
     # read is the easiest way to get a full image out of a VideoCapture object.
     retval, im = camera.read()
     return im
+
 
 def getPosition():
     cameraPort = 0
@@ -18,16 +20,19 @@ def getPosition():
         temp = getImage(camera)
     print("Taking image...")
     cameraCapture = getImage(camera)
-    #cv2.imshow('image',cameraCapture)
-    #cv2.waitKey(0)
-    #cv2.destroyAllWindows()
-    #ipAns = getState(cameraCapture)
-    del(camera)
+    cv2.imwrite("gadi" +str(time.time()) + ".png", cameraCapture)
+    # cv2.imshow('image',cameraCapture)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
+    # ipAns = getState(cameraCapture)
+    del (camera)
     return 1
-    #return ipAns
+    # return ipAns
+
 
 def getTreat():
     print("Good Job!")
+
 
 winsound.PlaySound('artza1.wav', winsound.SND_FILENAME)
 time.sleep(10)
@@ -45,7 +50,7 @@ while not inPlace:
         time.sleep(10)
 
 sit = True
-for x in range(0,5):
+for x in range(0, 6):
     if sit:
         winsound.PlaySound('shev1.wav', winsound.SND_FILENAME)
         time.sleep(5)
